@@ -22,8 +22,6 @@ namespace Infra.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BaseEntity>().HasQueryFilter(e => e.DeletionDateTime.Equals(null));
-
             base.OnModelCreating(modelBuilder);
         }
 

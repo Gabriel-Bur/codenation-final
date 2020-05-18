@@ -1,9 +1,9 @@
-﻿using Domain.Core.Entity;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace Domain.Core.Interfaces.Service
 {
-    public interface IUserService : IBaseService<User>
+    public interface IUserAppService : IDisposable
     {
         Task<bool> IsValidUser(object userDTO);
     }

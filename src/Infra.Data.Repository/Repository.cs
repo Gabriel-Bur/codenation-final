@@ -1,4 +1,5 @@
 ﻿using Domain.Core;
+using Domain.Core.Entity;
 using Domain.Core.Interfaces.Repository;
 using Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
@@ -8,15 +9,22 @@ using System.Threading.Tasks;
 
 namespace Infra.Data.Repository
 {
-    public class BaseRepository<T> : IDisposable, IBaseRepository<T> where T : BaseEntity
+    public class Repository<T> : IDisposable, IRepository<T> where T : class
     {
-        private readonly DatabaseContext _context = new DatabaseContext();
+        protected readonly DatabaseContext context;
+        protected readonly DbSet<T> _dbSet;
+
+        public Repository(DatabaseContext context)
+        {
+            this.context = context;
+            _dbSet = context.Set<T>();
+        }
 
         public virtual async Task<IEnumerable<T>> SelectAll()
         {
             try
             {
-                return await _context.Set<T>().ToListAsync();
+                return await _dbSet.ToListAsync();
             }
             catch (Exception ex)
             {
@@ -27,7 +35,7 @@ namespace Infra.Data.Repository
         {
             try
             {
-                return await _context.Set<T>().FindAsync(id);
+                return await _dbSet.FindAsync(id);
             }
             catch (Exception ex)
             {
@@ -38,9 +46,8 @@ namespace Infra.Data.Repository
         {
             try
             {
-                obj.CreationDataTime = DateTime.UtcNow;
-                await _context.Set<T>().AddAsync(obj);
-                await _context.SaveChangesAsync();
+                await _dbSet.AddAsync(obj);
+                SaveChangesAsync();
 
                 return obj;
             }
@@ -55,8 +62,8 @@ namespace Infra.Data.Repository
             {
                 if (await SelectById(id) != null)
                 {
-                    _context.Entry(obj).State = EntityState.Modified;
-                    await _context.SaveChangesAsync();
+                    _dbSet.Update(obj);
+                    SaveChangesAsync();
                 }
             }
             catch (Exception ex)
@@ -71,9 +78,8 @@ namespace Infra.Data.Repository
                 T obj = await SelectById(id);
                 if(obj != null)
                 {
-                    obj.DeletionDateTime = DateTime.UtcNow;
-                    _context.Entry(obj).State = EntityState.Modified;
-                    await _context.SaveChangesAsync();
+                    _dbSet.Remove(obj);
+                    SaveChangesAsync();
                 }
             }
             catch (Exception ex)
@@ -81,10 +87,17 @@ namespace Infra.Data.Repository
                 throw ex;
             }
         }
-        public virtual void Dispose()
+
+
+        private async void SaveChangesAsync()
         {
-            _context.Dispose();
+            await context.SaveChangesAsync();
         }
 
+        public void Dispose()
+        {
+            context.Dispose();
+            GC.SuppressFinalize(this);
+        }
     }
 }

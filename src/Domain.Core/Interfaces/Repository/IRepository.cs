@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Core.Interfaces.Repository
 {
-    public interface IBaseRepository<T> where T : BaseEntity
+    public interface IRepository<T> : IDisposable where T : class
     {
         Task<IEnumerable<T>> SelectAll();
         Task<T> SelectById(Guid id);
