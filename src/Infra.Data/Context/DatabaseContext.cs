@@ -1,11 +1,6 @@
-﻿using Domain.Core;
-using Domain.Core.Entity;
+﻿using Domain.Core.Entity;
+using Infra.Data.ModelBuilder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Infra.Data.Context
 {
@@ -20,8 +15,11 @@ namespace Infra.Data.Context
         }
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+        protected override void OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new ErrorModelBuilder());
+
             base.OnModelCreating(modelBuilder);
         }
 
