@@ -8,7 +8,7 @@
             Warning = 1,
             Debug = 2,
         }
-         public enum ErrorStage
+        public enum ErrorStage
         {
             Production = 0,
             Homolog = 1,

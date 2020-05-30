@@ -1,6 +1,6 @@
-﻿using Domain.Core.Entity;
+﻿using Application.Interfaces;
+using Application.ViewModels;
 using Domain.Core.Interfaces.Repository;
-using Domain.Core.Interfaces.Service;
 using System;
 using System.Threading.Tasks;
 
@@ -12,15 +12,12 @@ namespace Application.Services
 
         public UserAppService(IUserRepository userRepository)
         {
-            _userRepository = _userRepository;
+            _userRepository = userRepository;
         }
 
-
-
-        public Task<bool> IsValidUser(object userDTO)
+        public Task<bool> IsValidLogin(UserLoginViewModel userLoginViewModel)
         {
-            //TODO check if authentication is correct
-            throw new System.NotImplementedException();
+            
         }
 
         public void Dispose()
