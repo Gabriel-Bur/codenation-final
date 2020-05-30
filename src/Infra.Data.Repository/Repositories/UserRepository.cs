@@ -9,9 +9,5 @@ namespace Infra.Data.Repository.Repositories
         public UserRepository(DatabaseContext context) : base(context)
         {
         }
-
-
-
-
     }
 }

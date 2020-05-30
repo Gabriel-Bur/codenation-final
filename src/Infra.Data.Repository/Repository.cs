@@ -1,6 +1,4 @@
-﻿using Domain.Core;
-using Domain.Core.Entity;
-using Domain.Core.Interfaces.Repository;
+﻿using Domain.Core.Interfaces.Repository;
 using Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System;

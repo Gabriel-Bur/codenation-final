@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.0 - Infra", "5.0 - Infra"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Data", "5.1 - Data", "{10C7272A-CD32-4AD6-BC9B-1FA8C1620922}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Core", "Domain.Core\Domain.Core.csproj", "{940442C0-213C-454B-A6C0-A5DD562B5F65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain.Core\Domain.csproj", "{940442C0-213C-454B-A6C0-A5DD562B5F65}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.Data", "Infra.Data\Infra.Data.csproj", "{C8A23B06-63EE-4BEE-9B5E-9C45312A92E4}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.Data.Repository", "Infra.Data.Repository\Infra.Data.Repository.csproj", "{AFEA3749-5F96-4AC5-B29F-247D15B5FC4C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{1AF061E2-5BC6-4E4E-8B3E-E8C6532AB902}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.0 - Service", "2.0 - Service", "{E1F772B2-2E5C-4E2A-8642-9F8A141B4B58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
