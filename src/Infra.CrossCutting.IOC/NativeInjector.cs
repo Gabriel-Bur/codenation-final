@@ -1,7 +1,8 @@
 ﻿using Application.Interfaces;
 using Application.Services;
 using Domain.Core.Interfaces.Repository;
-using Infra.Data.Repository.Repositories;
+using Infra.Data.Context;
+using Infra.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infra.CrossCutting.IOC
@@ -10,6 +11,7 @@ namespace Infra.CrossCutting.IOC
     {
         public static void RegisterServices(IServiceCollection services)
         {
+
             #region Repository
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IErrorRepository, ErrorRepository>();
@@ -19,6 +21,9 @@ namespace Infra.CrossCutting.IOC
             #region Services
             services.AddScoped<IUserAppService, UserAppService>();
             #endregion
+
+            // Data - Infra
+            services.AddScoped<DatabaseContext>();
         }
     }
 }

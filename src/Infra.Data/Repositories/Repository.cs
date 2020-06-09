@@ -3,9 +3,10 @@ using Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace Infra.Data.Repository
+namespace Infra.Data.Repositories
 {
     public class Repository<T> : IDisposable, IRepository<T> where T : class
     {
@@ -85,7 +86,6 @@ namespace Infra.Data.Repository
                 throw ex;
             }
         }
-
 
         private async void SaveChangesAsync()
         {
