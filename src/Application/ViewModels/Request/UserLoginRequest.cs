@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.ViewModels
+namespace Application.ViewModels.Request
 {
-    public class UserLoginViewModel
+    public class UserLoginRequest
     {
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please, type your email")]
         [EmailAddress(ErrorMessage = "Invalid e-mail address")]

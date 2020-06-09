@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.ViewModels
+namespace Application.ViewModels.Request
 {
-    public class UserSingUpViewModel
+    public class UserSingUpRequest
     {
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please, type your name")]
         [MinLength(2, ErrorMessage = "The name must contain at least two characters")]
