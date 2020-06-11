@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Domain.Core.Entity
+﻿namespace Domain.Core.Entity
 {
     public class User : BaseEntity
     {

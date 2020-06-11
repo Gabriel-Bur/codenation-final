@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Core.Entity
 {
     public class BaseEntity
     {
-        public Guid Id { get; protected set; }
+        [Key]
+        public Guid Id { get; set; }
     }
 }

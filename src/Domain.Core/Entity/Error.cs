@@ -1,22 +1,18 @@
-﻿namespace Domain.Core.Entity
+﻿using Domain.Entity;
+using Domain.Entity.Enums;
+using System.Collections.Generic;
+
+namespace Domain.Core.Entity
 {
     public class Error : BaseEntity
     {
-        public enum ErrorLevel
-        {
-            Error = 0,
-            Warning = 1,
-            Debug = 2,
-        }
-        public enum ErrorStage
-        {
-            Production = 0,
-            Homolog = 1,
-            Dev = 2
-        }
+        public ErrorType Type { get; set; }
+        public string Title { get; set; }
+        public string Details { get; set; }
 
-        public ErrorLevel Level { get; set; }
-        public ErrorStage Stage { get; set; }
-        public string Log { get; set; }
+
+        #region Navigation
+        public virtual ICollection<ErrorFile> Files { get; set; }
+        #endregion
     }
 }

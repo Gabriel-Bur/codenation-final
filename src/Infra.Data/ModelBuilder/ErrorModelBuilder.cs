@@ -1,4 +1,5 @@
 ﻿using Domain.Core.Entity;
+using Domain.Entity.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,11 +10,32 @@ namespace Infra.Data.ModelBuilder
         public void Configure(EntityTypeBuilder<Error> builder)
         {
 
-            builder.Property(x => x.Stage)
-                .HasConversion<int>();
+            //Title
+            builder.Property(x => x.Title)
+                .HasColumnName("title")
+                .HasMaxLength(200)
+                .IsRequired();
 
-            builder.Property(x => x.Level)
-                .HasConversion<int>();
+            //Details
+            builder.Property(x => x.Details)
+                .HasColumnName("details")
+                .HasMaxLength(600)
+                .IsRequired();
+
+            //Level
+            builder.Property(x => x.Type)
+                .HasColumnName("level")
+                .HasConversion<ErrorType>()
+                .IsRequired();
+
+
+            //File
+            builder.HasMany(f => f.Files)
+                .WithOne(e => e.Error)
+                .HasForeignKey(e => e.ErrorId);
+
+            builder.Property(x => x.Files)
+                .IsRequired(false);
         }
     }
 }

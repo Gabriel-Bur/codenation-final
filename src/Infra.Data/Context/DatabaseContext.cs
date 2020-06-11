@@ -9,12 +9,10 @@ namespace Infra.Data.Context
         public DbSet<User> Users { get; set; }
         public DbSet<Error> Errors { get; set; }
 
-        public DatabaseContext()
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
             this.Database.EnsureCreated();
         }
-        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options) { }
-
 
         protected override void OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder modelBuilder)
         {
