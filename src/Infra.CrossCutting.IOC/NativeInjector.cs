@@ -11,19 +11,16 @@ namespace Infra.CrossCutting.IOC
     {
         public static void RegisterServices(IServiceCollection services)
         {
+            //Application
+            services.AddScoped<IUserAppService, UserAppService>();
+            services.AddScoped<IErrorAppService, ErrorAppService>();
 
-            #region Repository
+            // Data - Context
+            services.AddScoped<DatabaseContext>();
+
+            // Data - Repository
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IErrorRepository, ErrorRepository>();
-            #endregion
-
-
-            #region Services
-            services.AddScoped<IUserAppService, UserAppService>();
-            #endregion
-
-            // Data - Infra
-            services.AddScoped<DatabaseContext>();
         }
     }
 }
