@@ -1,6 +1,8 @@
 ﻿using Application.ViewModels.Request;
+using Application.ViewModels.Response;
 using AutoMapper;
 using Domain.Core.Entity;
+using Domain.Entity;
 
 namespace Application.AutoMapper
 {
@@ -10,6 +12,10 @@ namespace Application.AutoMapper
         {
             CreateMap<User, UserLoginRequest>();
             CreateMap<User, UserSingUpRequest>();
+            CreateMap<User, UserSingUpResponse>();
+
+            CreateMap<Error, ErrorResponse>();
+            CreateMap<ErrorFile, ErrorFileResponse>();
         }
     }
 }
