@@ -25,7 +25,7 @@ namespace Infra.Data.ModelBuilder
             //Level
             builder.Property(x => x.Type)
                 .HasColumnName("level")
-                .HasConversion<ErrorType>()
+                .HasConversion<int>()
                 .IsRequired();
 
 
@@ -34,8 +34,6 @@ namespace Infra.Data.ModelBuilder
                 .WithOne(e => e.Error)
                 .HasForeignKey(e => e.ErrorId);
 
-            builder.Property(x => x.Files)
-                .IsRequired(false);
         }
     }
 }

@@ -9,6 +9,5 @@ namespace Infra.Data.Repositories
         public ErrorRepository(DatabaseContext context) : base(context)
         {
         }
-
     }
 }

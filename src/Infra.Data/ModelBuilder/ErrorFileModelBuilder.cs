@@ -9,16 +9,16 @@ namespace Infra.Data.ModelBuilder
         public void Configure(EntityTypeBuilder<ErrorFile> builder)
         {
                        
-            //Title
+            //Name
             builder.Property(x => x.Name)
                 .HasColumnName("name")
                 .HasMaxLength(200)
                 .IsRequired();
 
-            //Details
+            //Data
             builder.Property(x => x.Data)
                 .HasColumnName("data")
-                .HasMaxLength(5000) // in kb 
+                .HasColumnType("binary(1024)") //in kb
                 .IsRequired();
 
         }
