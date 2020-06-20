@@ -3,8 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Api.Configuration
 {
@@ -28,7 +26,7 @@ namespace Api.Configuration
 
                 options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: {token}\"",
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer: {token}\"",
                     Name = "Authorization",
                     In = ParameterLocation.Header, 
                     Type = SecuritySchemeType.ApiKey,

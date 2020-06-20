@@ -1,4 +1,5 @@
-﻿using Application.ViewModels.Response;
+﻿using Application.ViewModels.Request;
+using Application.ViewModels.Response;
 using Domain.Core.Entity;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,6 @@ namespace Application.Interfaces
     {
         Task<ErrorResponse> GetErrorById(Guid Id);
         Task<IEnumerable<ErrorResponse>> GetErrors();
+        Task AddError(ErrorRequest errorRequest);
     }
 }

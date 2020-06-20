@@ -21,6 +21,7 @@ namespace Infra.CrossCutting.IOC
             // Data - Repository
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IErrorRepository, ErrorRepository>();
+            services.AddScoped<IErrorFileRepository, ErrorFileRepository>();
         }
     }
 }

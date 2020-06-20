@@ -13,5 +13,12 @@ namespace Domain.Entity
         public virtual Error Error { get; set; }
         #endregion
 
+
+        public ErrorFile() {}
+        public ErrorFile(Guid id, string name, byte[] data) : base(id)
+        {
+            this.Name = name;
+            this.Data = data;
+        }
     }
 }

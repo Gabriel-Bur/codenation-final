@@ -1,5 +1,4 @@
 ﻿using Domain.Core.Entity;
-using Domain.Entity.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -22,9 +21,9 @@ namespace Infra.Data.ModelBuilder
                 .HasMaxLength(600)
                 .IsRequired();
 
-            //Level
+            //Type
             builder.Property(x => x.Type)
-                .HasColumnName("level")
+                .HasColumnName("type")
                 .HasConversion<int>()
                 .IsRequired();
 

@@ -1,12 +1,12 @@
-﻿using Domain.Core.Entity;
-using Domain.Core.Interfaces.Repository;
+﻿using Domain.Core.Interfaces.Repository;
+using Domain.Entity;
 using Infra.Data.Context;
 
 namespace Infra.Data.Repositories
 {
-    public class ErrorRepository : Repository<Error>, IErrorRepository
+    public class ErrorFileRepository : Repository<ErrorFile>, IErrorFileRepository
     {
-        public ErrorRepository(DatabaseContext context) : base(context)
+        public ErrorFileRepository(DatabaseContext context) : base(context)
         {
         }
     }

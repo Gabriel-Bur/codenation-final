@@ -16,7 +16,7 @@ namespace Infra.Data.Repositories
         public Repository(DatabaseContext context)
         {
             this.context = context;
-            _dbSet = context.Set<T>();
+            this._dbSet = context.Set<T>();
         }
 
         public virtual async Task<IEnumerable<T>> SelectAll()
@@ -46,9 +46,21 @@ namespace Infra.Data.Repositories
             try
             {
                 await _dbSet.AddAsync(obj);
-                SaveChangesAsync();
+                await SaveChangesAsync();
 
                 return obj;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public virtual async Task InsertRange(IEnumerable<T> obj)
+        {
+            try
+            {
+                _dbSet.AddRange(obj);
+                await SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -62,7 +74,7 @@ namespace Infra.Data.Repositories
                 if (await SelectById(id) != null)
                 {
                     _dbSet.Update(obj);
-                    SaveChangesAsync();
+                    await SaveChangesAsync();
                 }
             }
             catch (Exception ex)
@@ -78,7 +90,7 @@ namespace Infra.Data.Repositories
                 if(obj != null)
                 {
                     _dbSet.Remove(obj);
-                    SaveChangesAsync();
+                    await SaveChangesAsync();
                 }
             }
             catch (Exception ex)
@@ -87,7 +99,7 @@ namespace Infra.Data.Repositories
             }
         }
 
-        private async void SaveChangesAsync()
+        private async Task SaveChangesAsync()
         {
             await context.SaveChangesAsync();
         }
@@ -97,5 +109,7 @@ namespace Infra.Data.Repositories
             context.Dispose();
             GC.SuppressFinalize(this);
         }
+
+
     }
 }

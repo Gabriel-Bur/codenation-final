@@ -1,4 +1,6 @@
-﻿namespace Domain.Core.Entity
+﻿using System;
+
+namespace Domain.Core.Entity
 {
     public class User : BaseEntity
     {
@@ -8,5 +10,13 @@
 
         public string Password { get; set; }
 
+        public User() {}
+
+        public User(Guid id, string name, string email, string password) : base(id)
+        {
+            this.Name = name;
+            this.Email = email;
+            this.Password = password;
+        }
     }
 }

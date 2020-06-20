@@ -7,5 +7,12 @@ namespace Domain.Core.Entity
     {
         [Key]
         public Guid Id { get; set; }
+
+        protected BaseEntity() { }
+
+        protected BaseEntity(Guid Id)
+        {
+            this.Id = Id;
+        }
     }
 }
